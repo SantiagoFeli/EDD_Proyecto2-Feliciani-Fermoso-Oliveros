@@ -28,6 +28,7 @@ public class main {
         System.out.println(registroprueba.BuscarHash("erge","fveffdvdvfvfev").getPrimer_nombre());
         
         System.out.println("Hola");
+        System.out.println("ayudapapadio");
     }
     
 }
