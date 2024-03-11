@@ -27,7 +27,7 @@ public class main {
         System.out.println(registroprueba.ImprimirHash());
         System.out.println(registroprueba.BuscarHash("erge","fveffdvdvfvfev").getPrimer_nombre());
         
-        
+        System.out.println("Hola");
     }
     
 }
