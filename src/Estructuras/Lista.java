@@ -81,14 +81,3 @@ public class Lista {
 }
 
 
-
-/*
-andres ---> 3 ---> clientes[3] = andres, tomas,                 
-0  
-1
-2       c2
-3       c1  
-4       
-
-
-*/
