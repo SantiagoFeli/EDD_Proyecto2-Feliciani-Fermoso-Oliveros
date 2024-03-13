@@ -12,8 +12,8 @@ public class ArbolReserva {
 
     private Reservacion raiz;
 
-    public ArbolReserva(Reservacion rz) {
-        this.raiz = rz;
+    public ArbolReserva() {
+        this.raiz = null;
     }
 
     public void IntertarReser(Reservacion actual, int ci, String er_nomb, String do_nom, String mail, String gen, String t_hab, String cel, String lle, String sal) {
@@ -46,6 +46,17 @@ public class ArbolReserva {
             } else {
                 return BuscarReser(actual.getDerecha(), ci);
             }
+        }
+    }
+
+    public String ImprimirReser(Reservacion actual, String print) {
+        if (actual == null) {
+            return print;
+        } else {
+            print = ImprimirReser(actual.getIzquierda(), print);
+            print += String.valueOf(actual.getCi()) + ", ";
+            print = ImprimirReser(actual.getDerecha(), print);
+            return print;
         }
     }
 

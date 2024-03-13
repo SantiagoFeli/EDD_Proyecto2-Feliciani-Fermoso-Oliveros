@@ -23,7 +23,7 @@ public class Reservacion {
     private Reservacion derecha;
 
     public Reservacion(int ci, String er_nomb, String do_nom, String mail, String gen, String t_hab, String cel, String lle, String sal) {
-        this.ci = 0;
+        this.ci = ci;
         this.er_nombre = er_nomb;
         this.do_nombre = do_nom;
         this.email = mail;
