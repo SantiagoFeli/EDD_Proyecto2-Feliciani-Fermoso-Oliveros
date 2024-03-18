@@ -1,5 +1,6 @@
 
 import Estructuras.Registro;
+import interfaz.Home;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,6 +32,9 @@ public class main {
         System.out.println("ayudapapadio");
         System.out.println("prueba github");
         System.out.println("prueba github2");
+        
+        Home ventana = new Home();
+        ventana.setVisible(true);
 
     }
     
