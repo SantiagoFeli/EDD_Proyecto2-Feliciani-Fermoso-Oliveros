@@ -36,6 +36,39 @@ public class ArbolReserva {
             }
         }
     }
+    
+    public Reservacion EliminarReser(Reservacion actual, int ci) {
+        if (actual == null) {
+            return null;
+        }
+
+        if (ci < actual.getCi()) {
+            actual.setIzquierda(EliminarReser(actual.getIzquierda(), ci));
+        } else if (ci > actual.getCi()) {
+            actual.setDerecha(EliminarReser(actual.getDerecha(), ci));
+        } else {
+            if (actual.getIzquierda() == null && actual.getDerecha() == null) {
+                actual = null;
+            } else if (actual.getIzquierda() == null) {
+                actual = actual.getDerecha();
+            } else if (actual.getDerecha() == null) {
+                actual = actual.getIzquierda();
+            } else {
+                Reservacion remplazo = BuscarMin(actual.getDerecha());
+                actual.setCi(remplazo.getCi());
+                actual.setDerecha(EliminarReser(actual.getDerecha(), remplazo.getCi()));
+            }
+        }
+        return actual;
+    }
+
+    private Reservacion BuscarMin(Reservacion actual) {
+        if (actual.getIzquierda() == null) {
+            return actual;
+        } else {
+            return BuscarMin(actual.getIzquierda());
+        }
+    }
 
     public Reservacion BuscarReser(Reservacion actual, int ci) {
         if (actual == null || actual.getCi() == ci) {
