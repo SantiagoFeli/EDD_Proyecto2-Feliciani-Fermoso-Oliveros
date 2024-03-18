@@ -11,13 +11,13 @@ package Estructuras;
 public class Registro {
 
     private int tamano;
-    private Lista[] clientes;
+    private ListaReserva[] clientes;
 
     public Registro(int t) {
         this.tamano = t;
-        this.clientes = new Lista[t];
+        this.clientes = new ListaReserva[t];
         for (int i = 0; i < t; i++) {
-            clientes[i] = new Lista();
+            clientes[i] = new ListaReserva();
         }
     }
 
@@ -74,14 +74,14 @@ public class Registro {
     /**
      * @return the clientes
      */
-    public Lista[] getClientes() {
+    public ListaReserva[] getClientes() {
         return clientes;
     }
 
     /**
      * @param clientes the clientes to set
      */
-    public void setClientes(Lista[] clientes) {
+    public void setClientes(ListaReserva[] clientes) {
         this.clientes = clientes;
     }
 
