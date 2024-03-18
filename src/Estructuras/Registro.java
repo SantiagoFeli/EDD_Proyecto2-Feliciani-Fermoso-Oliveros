@@ -21,16 +21,6 @@ public class Registro {
         }
     }
 
-    /*
-andres ---> 3 ---> clientes[3] = andres, tomas,                 
-0  
-1
-2       c2
-3       c1  
-4       
-
-
-     */
     public int Hash(String nombre, String apellido) {
         int hash = 0;
         for (int i = 0; i < nombre.length(); i++) {
