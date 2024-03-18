@@ -8,18 +8,18 @@ package Estructuras;
  *
  * @author santi
  */
-public class Lista {
+public class ListaHistorial {
 
-    Cliente primero;
+    Historial primero;
     int tamano;
 
-    public Lista() {
+    public ListaHistorial() {
         this.primero = null;
         this.tamano = 0;
     }
 
-    public void InsertarLista(String nombre, String apellido, int n_hab) {
-        Cliente nuevo = new Cliente(nombre, apellido, n_hab);
+    public void InsertarLista(int ci, String nom, String ape, String mail, String gen, String lle, int hab) {
+        Historial nuevo = new Historial(ci, nom, ape, mail, gen, lle, hab);
 
         if (this.primero == null) {
             this.primero = nuevo;
@@ -31,17 +31,17 @@ public class Lista {
         }
     }
 
-    public void EliminarLista(String nombre, String apellido) {
+    public void EliminarLista(String nom, String ape) {
 
         if (this.primero != null) {
 
-            Cliente aux = this.primero;
-            if (aux.getPrimer_nombre().equals(nombre) && aux.getSegundo_nombre().equals(apellido)) {
+            Historial aux = this.primero;
+            if (aux.getEr_nombre().equals(nom) && aux.getApellido().equals(ape)) {
                 this.primero = aux.getSiguiente();
                 tamano--;
             } else {
 
-                while (aux.getSiguiente() != null && !aux.getSiguiente().getPrimer_nombre().equals(nombre) && !aux.getSiguiente().getSegundo_nombre().equals(apellido)) {
+                while (aux.getSiguiente() != null && !aux.getSiguiente().getEr_nombre().equals(nom) && !aux.getSiguiente().getApellido().equals(ape)) {
                     aux = aux.getSiguiente();
                 }
 
@@ -52,13 +52,13 @@ public class Lista {
         }
     }
 
-    public Cliente BuscarLista(String nombre, String apellido) {
+    public Historial BuscarLista(String nom, String ape) {
         if (this.primero != null) {
-            Cliente aux = this.primero;
-            if (aux.getPrimer_nombre().equals(nombre) && aux.getSegundo_nombre().equals(apellido)) {
+            Historial aux = this.primero;
+            if (aux.getEr_nombre().equals(nom) && aux.getApellido().equals(ape)) {
                 return this.primero;
             } else {
-                while (aux != null && !aux.getPrimer_nombre().equals(nombre) && !aux.getSegundo_nombre().equals(apellido)) {
+                while (aux != null && !aux.getGenero().equals(nom) && !aux.getApellido().equals(ape)) {
                     aux = aux.getSiguiente();
                 }
                 return aux;
@@ -70,14 +70,12 @@ public class Lista {
     }
 
     public String ImprimirLista() {
-        Cliente aux = this.primero;
+        Historial aux = this.primero;
         String lista = "";
         while (aux != null) {
-            lista += aux.getPrimer_nombre() + ", " + aux.getSegundo_nombre() + ", " + aux.getNum_hab() + "; ";
+            lista += aux.getEr_nombre() + ", " + aux.getApellido() + ", " + aux.getNum_hab() + "; ";
             aux = aux.getSiguiente();
         }
         return lista;
     }
 }
-
-
