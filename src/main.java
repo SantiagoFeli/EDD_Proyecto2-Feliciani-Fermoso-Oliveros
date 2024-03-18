@@ -35,7 +35,7 @@ public class main {
         
         Home ventana = new Home();
         ventana.setVisible(true);
-
+        System.out.println("hola");
     }
     
 }
