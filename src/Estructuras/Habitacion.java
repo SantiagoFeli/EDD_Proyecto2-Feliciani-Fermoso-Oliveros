@@ -12,7 +12,7 @@ public class Habitacion {
     private int num_hab;
     private String tipo_hab;
     private String piso_hab;
-    private Lista historial;
+    private ListaHistorial historial;
     private Habitacion derecha;
     private Habitacion izquierda;
     private boolean ocupado;
@@ -21,7 +21,7 @@ public class Habitacion {
         this.num_hab = hab;
         this.tipo_hab = tipo;
         this.piso_hab = piso;
-        this.historial = new Lista();
+        this.historial = new ListaHistorial();
         this.derecha = null;
         this.izquierda = null;
     }
@@ -71,14 +71,14 @@ public class Habitacion {
     /**
      * @return the historial
      */
-    public Lista getHistorial() {
+    public ListaHistorial getHistorial() {
         return historial;
     }
 
     /**
      * @param historial the historial to set
      */
-    public void setHistorial(Lista historial) {
+    public void setHistorial(ListaHistorial historial) {
         this.historial = historial;
     }
 
@@ -123,4 +123,5 @@ public class Habitacion {
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
     }
+
 }
