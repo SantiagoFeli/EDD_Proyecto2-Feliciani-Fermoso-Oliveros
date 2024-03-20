@@ -4,6 +4,8 @@
  */
 package interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author camilafermosoiglesias
@@ -40,7 +42,6 @@ public class Home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        exit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +70,11 @@ public class Home extends javax.swing.JFrame {
         buscarreserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarreservaActionPerformed(evt);
+            }
+        });
+        buscarreserva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                buscarreservaKeyTyped(evt);
             }
         });
         getContentPane().add(buscarreserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
@@ -118,7 +124,7 @@ public class Home extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/t3.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 160, 60));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/camilafermosoiglesias/Desktop/t4.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/t4.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 140, 60));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/t5.png"))); // NOI18N
@@ -127,15 +133,6 @@ public class Home extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guestlink.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
-        exit.setBackground(new java.awt.Color(227, 31, 36));
-        exit.setText("X");
-        exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 30));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -143,28 +140,95 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarclienteActionPerformed
-        // TODO add your handling code here:
+        // Permite que el usuario ingrese el primer y segundo nombre, convirtiendolos en un string
+        String primer_nombre = JOptionPane.showInputDialog(this, "Ingrese el primer nombre");
+        String segundo_nombre = JOptionPane.showInputDialog(this, "Ingrese el segundo nombre");
+        
+        // Buscar la reservacion usando el primer y segundo nombre
+        
+        // 
     }//GEN-LAST:event_buscarclienteActionPerformed
 
     private void buscarreservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarreservaActionPerformed
-        // TODO add your handling code here:
+        // Ingresar la cedula
+        String cedulaString = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente");
+        
+        // Convertir la cedula de string a int, validando que sea numerica
+        int cedula;
+        try {
+            cedula = Integer.parseInt(cedulaString);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
+            return;
+        }
+        
+        // Buscar la reservacion usando la cedula
+        // Reservacion reserva = buscar reserva por cedula(cedula);
+                
+        // Mostrar reserva encontrada
+        /*
+        if (reserva == null){
+            // Si no se encuentra ninguna reserva para la cedula
+            JOptionPane.showMessageDialog(this, "No se encontraron reservas para esa cedula");
+        } else {
+            // Mostrar las reservas encontradas
+            String display = "Reservas encontradas: \n";
+            for (Reserva r : reserva){
+                mensaje += r.getCi + "\n"
+            }
+            JOptionPane.showMessageDialog(this, display);
+        }
+        */
     }//GEN-LAST:event_buscarreservaActionPerformed
 
     private void historialhabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialhabitacionActionPerformed
-        // TODO add your handling code here:
+        // Ingresar numero de habitacion
+        String num_habString = JOptionPane.showInputDialog(this, "Ingrese el numero de habitacion");
+        
+        // Convertir el numero de habitacion de string a int, validando que sea numerica
+        int num_hab;
+        try {
+            num_hab = Integer.parseInt(num_habString);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El numero de habitacion debe ser numerico");
+            return;
+        }
     }//GEN-LAST:event_historialhabitacionActionPerformed
 
     private void checkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkinActionPerformed
-        // TODO add your handling code here:
+        // Ingresar la cedula
+        String cedulaString = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente");
+        
+        // Convertir la cedula de string a int, validando que sea numerica
+        int cedula;
+        try {
+            cedula = Integer.parseInt(cedulaString);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
+            return;
+        }
+        
+        // Se le asigna una habitacion 
+        
     }//GEN-LAST:event_checkinActionPerformed
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
-        // TODO add your handling code here:
+        // Ingresar la cedula
+        String cedulaString = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente");
+        
+        // Convertir la cedula de string a int, validando que sea numerica
+        int cedula;
+        try {
+            cedula = Integer.parseInt(cedulaString);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
+            return;
+        }
     }//GEN-LAST:event_checkoutActionPerformed
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_exitActionPerformed
+    private void buscarreservaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarreservaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarreservaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -206,7 +270,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton buscarreserva;
     private javax.swing.JButton checkin;
     private javax.swing.JButton checkout;
-    private javax.swing.JButton exit;
     private javax.swing.JButton historialhabitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
