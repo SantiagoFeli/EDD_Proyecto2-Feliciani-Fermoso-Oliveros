@@ -58,7 +58,7 @@ public class ListaReserva {
             if (aux.getPrimer_nombre().equals(nombre) && aux.getSegundo_nombre().equals(apellido)) {
                 return this.primero;
             } else {
-                while (aux != null && !aux.getPrimer_nombre().equals(nombre) && !aux.getSegundo_nombre().equals(apellido)) {
+                while (aux != null && (!aux.getPrimer_nombre().equals(nombre) || !aux.getSegundo_nombre().equals(apellido))) {
                     aux = aux.getSiguiente();
                 }
                 return aux;
