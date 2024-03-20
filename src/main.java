@@ -66,6 +66,7 @@ public class main {
         Home ventana = new Home(arbol2, arbol, registroprueba, fh);
         ventana.setVisible(true);
         System.out.println("hola");
+        System.out.println("al dia");
     }
 
 }
