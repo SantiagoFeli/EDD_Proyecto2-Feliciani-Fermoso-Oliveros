@@ -4,6 +4,13 @@
  */
 package interfaz;
 
+import Estructuras.ArbolHabitacion;
+import Estructuras.ArbolReserva;
+import Estructuras.Cliente;
+import Estructuras.FuncionesHotel;
+import Estructuras.Habitacion;
+import Estructuras.Registro;
+import Estructuras.Reservacion;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,12 +18,19 @@ import javax.swing.JOptionPane;
  * @author camilafermosoiglesias
  */
 public class Home extends javax.swing.JFrame {
-
+    static ArbolHabitacion ah;
+    static ArbolReserva ar;
+    static Registro reg;
+    static FuncionesHotel fh;
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home( ArbolHabitacion ah, ArbolReserva ar, Registro reg, FuncionesHotel fh) {
         initComponents();
+        this.ah = ah;
+        this.ar = ar;
+        this.reg = reg;
+        this.fh = fh;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -144,6 +158,11 @@ public class Home extends javax.swing.JFrame {
         String primer_nombre = JOptionPane.showInputDialog(this, "Ingrese el primer nombre");
         String segundo_nombre = JOptionPane.showInputDialog(this, "Ingrese el segundo nombre");
         
+        Cliente encontrado = this.reg.BuscarHash(primer_nombre, segundo_nombre);
+        if(encontrado != null){
+            String mensaje = encontrado.getPrimer_nombre() + " " + encontrado.getSegundo_nombre() + " se hospeda en la habitacion " + encontrado.getNum_hab();
+            JOptionPane.showMessageDialog(rootPane, mensaje, "Datos del cliente: " + encontrado.getPrimer_nombre() + ", " + encontrado.getSegundo_nombre() , 1);
+        }
         // Buscar la reservacion usando el primer y segundo nombre
         
         // 
@@ -157,6 +176,9 @@ public class Home extends javax.swing.JFrame {
         int cedula;
         try {
             cedula = Integer.parseInt(cedulaString);
+            Reservacion reservaencontrada = this.ar.BuscarReser(ar.getRaiz(), cedula);
+            String mensaje = "Cedula del Cliente: " + reservaencontrada.getCi() + "\nNombre completo del cliente: " + reservaencontrada.getEr_nombre() +  ", "  + reservaencontrada.getDo_nombre() + "\nEmail del cliente: " + reservaencontrada.getEmail() + "\nGenero del cliente: " + reservaencontrada.getGenero() + "\nTipo de habitacion del cliente: "  +reservaencontrada.getTipo_hab() + "\nCelular del cliente: " +reservaencontrada.getCelular() + "\nEstadia del cliente: " + reservaencontrada.getLlegada() + ", al: " + reservaencontrada.getSalida();
+            JOptionPane.showMessageDialog(rootPane, mensaje, "Buscar Reserva", 1);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
             return;
@@ -189,6 +211,9 @@ public class Home extends javax.swing.JFrame {
         int num_hab;
         try {
             num_hab = Integer.parseInt(num_habString);
+            Habitacion historialhabitacion = this.ah.BuscarHab(ah.getRaiz(), num_hab);
+            String mensaje = historialhabitacion.getHistorial().ImprimirLista();
+            JOptionPane.showMessageDialog(rootPane, mensaje, "Historial de la Habitacion numero: " + num_hab, 1);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El numero de habitacion debe ser numerico");
             return;
@@ -203,6 +228,7 @@ public class Home extends javax.swing.JFrame {
         int cedula;
         try {
             cedula = Integer.parseInt(cedulaString);
+            JOptionPane.showMessageDialog(rootPane, fh.CheckIn(cedula), "CheckIn del Cliente ", 1);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
             return;
@@ -220,6 +246,7 @@ public class Home extends javax.swing.JFrame {
         int cedula;
         try {
             cedula = Integer.parseInt(cedulaString);
+            JOptionPane.showMessageDialog(rootPane, fh.CheckOut(cedula), "CheckOut del Cliente ", 1);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
             return;
@@ -260,7 +287,7 @@ public class Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new Home(ah, ar, reg, fh).setVisible(true);
             }
         });
     }
