@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Metodos del CheckIn y CheckOut
  */
 public class FuncionesHotel {
 
@@ -38,7 +40,7 @@ public class FuncionesHotel {
 
     public String CheckOut(int ci) {
         if (reservas.BuscarReser(reservas.getRaiz(), ci) == null) {
-            return "No hay reservas con esa cedula";
+            return "No hay un cliente hospedado a nombre de esa cedula";
         } else {
             Habitacion hab = habitaciones.BuscarHab(habitaciones.getRaiz(), this.clientes.BuscarHash(reservas.BuscarReser(reservas.getRaiz(), ci).getEr_nombre(), reservas.BuscarReser(reservas.getRaiz(), ci).getDo_nombre()).getNum_hab());
             hab.setOcupado(false);
