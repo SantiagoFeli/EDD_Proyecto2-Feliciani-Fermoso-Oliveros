@@ -19,8 +19,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- *
- * @author santi
+ *Esta clase se encarga de leer el archivo .xlsx y extraer los datos requeridos
+ * @author Diego
+ * version 22/03/2024
  */
 public class LectorCSV {
 
