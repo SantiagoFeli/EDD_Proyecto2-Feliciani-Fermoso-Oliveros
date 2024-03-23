@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Los metodos que complementan los metodos del Hash
  */
 public class ListaReserva {
 
@@ -55,10 +57,10 @@ public class ListaReserva {
     public Cliente BuscarLista(String nombre, String apellido) {
         if (this.primero != null) {
             Cliente aux = this.primero;
-            if (aux.getPrimer_nombre().equals(nombre) && aux.getSegundo_nombre().equals(apellido)) {
+            if (aux.getPrimer_nombre().toLowerCase().equals(nombre.toLowerCase()) && aux.getSegundo_nombre().toLowerCase().equals(apellido.toLowerCase())) {
                 return this.primero;
             } else {
-                while (aux != null && (!aux.getPrimer_nombre().equals(nombre) || !aux.getSegundo_nombre().equals(apellido))) {
+                while (aux != null && (!aux.getPrimer_nombre().toLowerCase().equals(nombre.toLowerCase()) || !aux.getSegundo_nombre().toLowerCase().equals(apellido.toLowerCase()))) {
                     aux = aux.getSiguiente();
                 }
                 return aux;

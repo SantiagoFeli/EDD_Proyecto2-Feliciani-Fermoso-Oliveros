@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Historial
  */
 public class Historial {
 

@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Los metodos que complementan los metodos del ArbolHabitacion
  */
 public class ListaHistorial {
 

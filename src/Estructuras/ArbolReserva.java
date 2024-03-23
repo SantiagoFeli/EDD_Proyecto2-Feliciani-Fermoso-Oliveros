@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Todos los metodos utilizados para las reservas
  */
 public class ArbolReserva {
 

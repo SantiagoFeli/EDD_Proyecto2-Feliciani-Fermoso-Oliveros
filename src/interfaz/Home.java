@@ -14,9 +14,12 @@ import Estructuras.Reservacion;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author camilafermosoiglesias
+ * @Description Interfaz Grafia
+ * @author Camila
+ * @version 23/03/24
  */
+
+
 public class Home extends javax.swing.JFrame {
 
     static ArbolHabitacion ah;
@@ -162,8 +165,10 @@ public class Home extends javax.swing.JFrame {
 
         Cliente encontrado = this.reg.BuscarHash(primer_nombre, segundo_nombre);
         if (encontrado != null) {
-            String mensaje = "El cliente: " + encontrado.getPrimer_nombre() + ", " + encontrado.getSegundo_nombre() + " se hospeda en la habitacion " + encontrado.getNum_hab();
+            String mensaje = "El cliente: " + encontrado.getPrimer_nombre() + ", " + encontrado.getSegundo_nombre() + "\nSe hospeda en la habitacion numero: " + encontrado.getNum_hab();
             JOptionPane.showMessageDialog(rootPane, mensaje, "Datos del cliente: " + encontrado.getPrimer_nombre() + ", " + encontrado.getSegundo_nombre(), 1);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay clientes con ese nombre o apellido", "ERROR", 0);
         }
         // Buscar la reservacion usando el primer y segundo nombre
 
