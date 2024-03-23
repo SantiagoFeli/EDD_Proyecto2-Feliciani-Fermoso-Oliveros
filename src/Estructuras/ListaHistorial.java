@@ -73,7 +73,7 @@ public class ListaHistorial {
         Historial aux = this.primero;
         String lista = "";
         while (aux != null) {
-            lista += "Cedula del cliente: " + aux.getCedula() + "; Nombre completo del cliente:  " + aux.getEr_nombre() + ", " + aux.getApellido() + "; Email del cliente:  " + aux.getEmail() + "; Genero del cliente:  " + aux.getGenero() + "; Llegada del cliente: " + aux.getLlegada() + "; Habitacion del cliente: " + aux.getNum_hab() + "\n" + "\n";
+            lista += "Cedula del cliente: " + aux.getCedula() + "\nNombre completo del cliente:  " + aux.getEr_nombre() + ", " + aux.getApellido() + "\nEmail del cliente:  " + aux.getEmail() + "\nGenero del cliente:  " + aux.getGenero() + "\nLlegada del cliente: " + aux.getLlegada() + "\nHabitacion del cliente: " + aux.getNum_hab() + "\n" + "\n";
             aux = aux.getSiguiente();
         }
         return lista;
