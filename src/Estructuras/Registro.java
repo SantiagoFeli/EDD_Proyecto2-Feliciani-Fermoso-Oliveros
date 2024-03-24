@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Hash y sus Metodos
  */
 public class Registro {
 
@@ -23,11 +25,11 @@ public class Registro {
 
     public int Hash(String nombre, String apellido) {
         int hash = 0;
-        for (int i = 0; i < nombre.length(); i++) {
-            hash += (int) nombre.charAt(i) * i;
+        for (int i = 0; i < nombre.toLowerCase().length(); i++) {
+            hash += (int) nombre.toLowerCase().charAt(i) * i;
         }
-        for (int i = 0; i < apellido.length(); i++) {
-            hash += (int) apellido.charAt(i) * i;
+        for (int i = 0; i < apellido.toLowerCase().length(); i++) {
+            hash += (int) apellido.toLowerCase().charAt(i) * i;
         }
         return hash % tamano;
     }

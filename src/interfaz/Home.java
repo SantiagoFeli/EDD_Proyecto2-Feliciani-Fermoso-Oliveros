@@ -4,19 +4,38 @@
  */
 package interfaz;
 
+import Estructuras.ArbolHabitacion;
+import Estructuras.ArbolReserva;
+import Estructuras.Cliente;
+import Estructuras.FuncionesHotel;
+import Estructuras.Habitacion;
+import Estructuras.Registro;
+import Estructuras.Reservacion;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author camilafermosoiglesias
+ * @Description Interfaz Grafia
+ * @author Camila
+ * @version 23/03/24
  */
+
+
 public class Home extends javax.swing.JFrame {
+
+    static ArbolHabitacion ah;
+    static ArbolReserva ar;
+    static Registro reg;
+    static FuncionesHotel fh;
 
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home(ArbolHabitacion ah, ArbolReserva ar, Registro reg, FuncionesHotel fh) {
         initComponents();
+        this.ah = ah;
+        this.ar = ar;
+        this.reg = reg;
+        this.fh = fh;
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
@@ -143,53 +162,57 @@ public class Home extends javax.swing.JFrame {
         // Permite que el usuario ingrese el primer y segundo nombre, convirtiendolos en un string
         String primer_nombre = JOptionPane.showInputDialog(this, "Ingrese el primer nombre");
         String segundo_nombre = JOptionPane.showInputDialog(this, "Ingrese el segundo nombre");
-        
+
+        Cliente encontrado = this.reg.BuscarHash(primer_nombre, segundo_nombre);
+        if (encontrado != null) {
+            String mensaje = "El cliente: " + encontrado.getPrimer_nombre() + ", " + encontrado.getSegundo_nombre() + "\nSe hospeda en la habitacion numero: " + encontrado.getNum_hab();
+            JOptionPane.showMessageDialog(rootPane, mensaje, "Datos del cliente: " + encontrado.getPrimer_nombre() + ", " + encontrado.getSegundo_nombre(), 1);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay clientes con ese nombre o apellido", "ERROR", 0);
+        }
         // Buscar la reservacion usando el primer y segundo nombre
-        
+
         // 
     }//GEN-LAST:event_buscarclienteActionPerformed
 
     private void buscarreservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarreservaActionPerformed
         // Ingresar la cedula
         String cedulaString = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente");
-        
+
         // Convertir la cedula de string a int, validando que sea numerica
         int cedula;
         try {
             cedula = Integer.parseInt(cedulaString);
-        } catch (NumberFormatException e){
+            if (this.ar.BuscarReser(ar.getRaiz(), cedula) == null) {
+                JOptionPane.showMessageDialog(rootPane, "No hay reservas relacionadas con esa cedula", "ERROR", 0);
+            } else {
+                Reservacion reservaencontrada = this.ar.BuscarReser(ar.getRaiz(), cedula);
+                String mensaje = "Cedula del Cliente: " + reservaencontrada.getCi() + "\nNombre completo del cliente: " + reservaencontrada.getEr_nombre() + ", " + reservaencontrada.getDo_nombre() + "\nEmail del cliente: " + reservaencontrada.getEmail() + "\nGenero del cliente: " + reservaencontrada.getGenero() + "\nTipo de habitacion del cliente: " + reservaencontrada.getTipo_hab() + "\nCelular del cliente: " + reservaencontrada.getCelular() + "\nEstadia del cliente: " + reservaencontrada.getLlegada() + ", al: " + reservaencontrada.getSalida();
+                JOptionPane.showMessageDialog(rootPane, mensaje, "Buscar Reserva", 1);
+            }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
             return;
         }
-        
-        // Buscar la reservacion usando la cedula
-        // Reservacion reserva = buscar reserva por cedula(cedula);
-                
-        // Mostrar reserva encontrada
-        /*
-        if (reserva == null){
-            // Si no se encuentra ninguna reserva para la cedula
-            JOptionPane.showMessageDialog(this, "No se encontraron reservas para esa cedula");
-        } else {
-            // Mostrar las reservas encontradas
-            String display = "Reservas encontradas: \n";
-            for (Reserva r : reserva){
-                mensaje += r.getCi + "\n"
-            }
-            JOptionPane.showMessageDialog(this, display);
-        }
-        */
+
     }//GEN-LAST:event_buscarreservaActionPerformed
 
     private void historialhabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialhabitacionActionPerformed
         // Ingresar numero de habitacion
         String num_habString = JOptionPane.showInputDialog(this, "Ingrese el numero de habitacion");
-        
+
         // Convertir el numero de habitacion de string a int, validando que sea numerica
         int num_hab;
         try {
             num_hab = Integer.parseInt(num_habString);
-        } catch (NumberFormatException e){
+            if (this.ah.BuscarHab(ah.getRaiz(), num_hab) == null) {
+                JOptionPane.showMessageDialog(rootPane, "No hay un historial relacionado con esa habitacion o no existe", "ERROR", 0);
+            } else {
+                Habitacion historialhabitacion = this.ah.BuscarHab(ah.getRaiz(), num_hab);
+                String mensaje = historialhabitacion.getHistorial().ImprimirLista();
+                JOptionPane.showMessageDialog(rootPane, mensaje, "Historial de la Habitacion numero: " + num_hab, 1);
+            }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El numero de habitacion debe ser numerico");
             return;
         }
@@ -198,29 +221,31 @@ public class Home extends javax.swing.JFrame {
     private void checkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkinActionPerformed
         // Ingresar la cedula
         String cedulaString = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente");
-        
+
         // Convertir la cedula de string a int, validando que sea numerica
         int cedula;
         try {
             cedula = Integer.parseInt(cedulaString);
-        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, fh.CheckIn(cedula), "CheckIn del Cliente ", 1);
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
             return;
         }
-        
+
         // Se le asigna una habitacion 
-        
+
     }//GEN-LAST:event_checkinActionPerformed
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
         // Ingresar la cedula
         String cedulaString = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente");
-        
+
         // Convertir la cedula de string a int, validando que sea numerica
         int cedula;
         try {
             cedula = Integer.parseInt(cedulaString);
-        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, fh.CheckOut(cedula), "CheckOut del Cliente ", 1);
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La cedula solo puede contener numeros");
             return;
         }
@@ -260,7 +285,7 @@ public class Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new Home(ah, ar, reg, fh).setVisible(true);
             }
         });
     }

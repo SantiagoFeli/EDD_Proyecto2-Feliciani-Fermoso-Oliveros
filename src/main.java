@@ -1,16 +1,22 @@
 
+import Estructuras.ArbolHabitacion;
+import Estructuras.ArbolReserva;
+import Estructuras.FuncionesHotel;
+import Estructuras.Habitacion;
 import Estructuras.Registro;
+import LectorXlsx.LectorXlsx;
 import interfaz.Home;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
  */
+
 public class main {
 
     /**
@@ -18,24 +24,13 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Registro registroprueba = new Registro(7);
-        registroprueba.InsertarHash("nombre","fvefvfev", 1);
-        registroprueba.InsertarHash("erge","fveffdvdvfvfev", 2);
-        registroprueba.InsertarHash("nodfvdfmbre","fveffvdfdvfev", 3);
-        System.out.println(registroprueba.ImprimirHash());
-        registroprueba.EliminarHash("nombre","fvefvfev");
-        System.out.println(registroprueba.ImprimirHash());
-        System.out.println(registroprueba.BuscarHash("erge","fveffdvdvfvfev").getPrimer_nombre());
-        
-        System.out.println("Hola");
-        System.out.println("ayudapapadio");
-        System.out.println("prueba github");
-        System.out.println("prueba github2");
-        
-        Home ventana = new Home();
+
+        LectorXlsx lector = new LectorXlsx();
+        lector.LeerCSV();
+        FuncionesHotel fh = new FuncionesHotel(lector.a, lector.x, lector.y);
+
+        Home ventana = new Home(lector.a, lector.x, lector.y, fh);
         ventana.setVisible(true);
-        System.out.println("hola");
     }
-    
+
 }

@@ -5,8 +5,10 @@
 package Estructuras;
 
 /**
- *
- * @author santi
+ * @Description Main
+ * @author Santiago
+ * @version 23/03/24
+ * @retorna Los metodos que complementan los metodos del ArbolHabitacion
  */
 public class ListaHistorial {
 
@@ -73,7 +75,7 @@ public class ListaHistorial {
         Historial aux = this.primero;
         String lista = "";
         while (aux != null) {
-            lista += aux.getEr_nombre() + ", " + aux.getApellido() + ", " + aux.getNum_hab() + "; ";
+            lista += "Cedula del cliente: " + aux.getCedula() + "\nNombre completo del cliente:  " + aux.getEr_nombre() + ", " + aux.getApellido() + "\nEmail del cliente:  " + aux.getEmail() + "\nGenero del cliente:  " + aux.getGenero() + "\nLlegada del cliente: " + aux.getLlegada() + "\nHabitacion del cliente: " + aux.getNum_hab() + "\n" + "\n";
             aux = aux.getSiguiente();
         }
         return lista;
