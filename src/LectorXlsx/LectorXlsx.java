@@ -42,9 +42,6 @@ public class LectorXlsx {
             File inputFile = new File(parentDirectory, "Booking_Hotel.xlsx");
             System.out.println(inputFile);
             FileInputStream f = new FileInputStream(inputFile);
-//            FileInputStream f = new FileInputStream("C:\\Users\\santi\\OneDrive\\Desktop\\Booking_Hotel.xlsx");
-//            FileInputStream f = new FileInputStream("..\\..\\Booking_Hotel.xlsx");
-//            FileInputStream f = new FileInputStream(ClassLoader.getSystemResources());
             XSSFWorkbook libro = new XSSFWorkbook(f);
             XSSFSheet hoja = libro.getSheetAt(0);
             Iterator<Row> filas = hoja.iterator();
